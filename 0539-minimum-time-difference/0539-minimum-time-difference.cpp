@@ -16,7 +16,7 @@ public:
             int diff = minutes[j+1] - minutes[j];
             mini = min(mini,diff);
         }
-        
+        // here the game lies beacause most of others cna think below process
             int lastDiff1 = (minutes[0] + 1440) - minutes[minutes.size()-1];
             int lastDiff2 = (minutes[minutes.size() - 1] - minutes[0]);
             int lastdiff = min(lastDiff1,lastDiff2);

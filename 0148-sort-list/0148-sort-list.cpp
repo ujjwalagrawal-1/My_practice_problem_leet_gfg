@@ -35,7 +35,12 @@ public:
                 insertattail(raja,tail,i->first);
             }
         }
-        delete head;
+        temp = head;
+        while (temp != nullptr) {
+            ListNode* nextNode = temp->next;
+            delete temp;
+            temp = nextNode;
+        }
         return raja;
     }
 };

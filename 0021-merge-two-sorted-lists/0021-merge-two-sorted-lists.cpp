@@ -11,35 +11,53 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* left, ListNode* right) {
+        // if(left == 0){
+        //     return right;
+        // }
+        // if(right == 0){
+        //     return left;
+        // }
+
+        // ListNode* newnode = new ListNode(-1);
+        // ListNode* mpt = newnode;
+        // while(left && right){
+        //     if(left->val<=right->val){
+        //         mpt->next = left;
+        //         mpt = left;
+        //         left = left->next;
+        //     }
+        //     else{
+        //         mpt->next = right;
+        //         mpt = right;
+        //         right = right-> next;
+        //     }
+        // }
+        // if(left){
+        //     mpt->next = left;
+        // }
+        // if(right){
+        //     mpt->next = right;
+        // }
+        // ListNode* raja = newnode->next;
+        // delete newnode;
+        // return raja;
+
+        // Buy recurrsively
         if(left == 0){
             return right;
         }
         if(right == 0){
             return left;
         }
-
-        ListNode* newnode = new ListNode(-1);
-        ListNode* mpt = newnode;
-        while(left && right){
-            if(left->val<=right->val){
-                mpt->next = left;
-                mpt = left;
-                left = left->next;
-            }
-            else{
-                mpt->next = right;
-                mpt = right;
-                right = right-> next;
-            }
+        // ListNode* ans = 0;
+        if(left->val<right->val){
+            left->next = mergeTwoLists(left->next,right);
+            return left;
         }
-        if(left){
-            mpt->next = left;
+        else{
+            // ans = right;
+            right->next = mergeTwoLists(left,right->next);
+            return right;
         }
-        if(right){
-            mpt->next = right;
-        }
-        ListNode* raja = newnode->next;
-        delete newnode;
-        return raja;
     }
 };
